@@ -1,0 +1,153 @@
+*
+{
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+    border-radius: 7px;
+}
+
+body
+{
+    background: #e3d9ca;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+#full
+{
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background: #333;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 0;
+}
+
+#fullinhalt
+{
+    margin-top: 20%;
+}
+
+#startbutton
+{
+    color: #333;
+    font-size: 14pt;
+}
+
+#startbutton:hover
+{
+    cursor: pointer;
+}
+
+header, main, footer, nav
+{
+    width: 100%;
+    padding: 1%;
+    margin-bottom: 1%;
+    text-align: center;
+}
+
+.standard
+{
+    background: #95a792;
+}
+
+main
+{
+    min-height: 700px;
+}
+
+a
+{
+
+}
+
+header
+{
+    height: 200px;
+    text-align: center;
+}
+
+.kopf
+{
+    overflow: hidden;
+    height: 200px;
+    width: 100%;
+}
+
+#headinhalt
+{
+    text-align: center;
+    background: #aaa;
+    text-align: center;
+    z-index: 100;
+
+}
+
+#video
+{
+    z-index: -1;
+}
+
+article
+{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    
+}
+
+.produkt
+{
+    width: 15.7%;
+    margin: 1%;
+    border-style: solid;
+    border-color: #333;
+    border-width: 1px;
+    padding: 1%;
+    /* transition: 1s; */
+}
+.produkt:hover
+{
+    cursor: pointer;
+}
+
+.produktbild
+{
+    height: 150px;
+    width: 100%;
+    background: #596c68;
+}
+
+#einzelprodukt
+{
+    display: none;
+    opacity: 0;
+}
+
+#grossbild
+{
+    height: 300px;
+    background: #333;
+    flex: 1;
+    padding: 1%;
+    margin: 1%;
+}
+
+#infotext
+{
+    height: 300px;
+    background: #666;
+    flex: 2;
+    padding: 1%;
+    margin: 1%;
+    text-align: left;
+}
+
+#beschreibung
+{
+    text-align: left;
+}
