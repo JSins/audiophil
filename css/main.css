@@ -7,8 +7,16 @@
 body
 {
     background: #e3d9ca;
-    padding-left: 10%;
-    padding-right: 10%;
+}
+
+#backvid
+{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -5;
 }
 
 #full
@@ -27,7 +35,7 @@ body
 
 #fullinhalt
 {
-    margin-top: 20%;
+    margin-top: 20vh;
 }
 
 #startbutton
@@ -43,9 +51,11 @@ body
 
 header, main, footer, nav
 {
-    width: 100%;
+    width: 70%;
+    max-width: 1500px;
     padding: 1%;
-    margin-bottom: 1%;
+    margin: auto;
+    margin-bottom: 10px;
     text-align: center;
 }
 
