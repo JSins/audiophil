@@ -2,15 +2,18 @@
 let hintergrund = new Audio('audio/breathee.mp3');
 
 $('#startbutton').click(()=>{
-    $('#full').fadeOut(1000).hide(1000);
+    $('#full').fadeOut(3000).hide(1000);
     hintergrund.play();
+    hintergrund.volume = 0.7;
     
 })
 // ----------------------------------------------------------------------------
 
 
-
-
+let buttonaudio = new Audio('audio/button.mp3');
+$('button').click(()=>{
+  buttonaudio.play();
+})
 
 
 // Arrays -------------------------
@@ -100,7 +103,7 @@ if(counter == steine.length);
 
 $(".produkt").mouseenter(function() {
 
-    $('#' + this.id).fadeTo(300, 1);
+    $('#' + this.id).fadeTo(30, 1);
 
 
 
@@ -136,7 +139,7 @@ $(".produkt").mouseenter(function() {
 
 $(".produkt").mouseleave(function() {
 
-    $('#' + this.id).fadeTo(300, 0.6);
+    $('#' + this.id).fadeTo(30, 0.6);
 
 
     statuse[this.id] = 0;
