@@ -46,7 +46,11 @@ let steininfo = [
 
 
 
-
+$('#back').click(()=>{
+  $('#einzelprodukt').fadeTo(1000, 0).hide(1000);
+  $('#produkte').show(1).fadeTo(1000, 1);
+  
+})
 
 
 
@@ -61,38 +65,47 @@ var lauts = [];
 var statuse =[];
 var neu;
 
-for(i = 0; i <= steine.length-1; i++)
-{  
-        $('#produkte').append("<div class='produkt' id='" + i + "'><div class='produktbild'></div><h3>" + steine[i] + "</h3></div>");
-        $('#' + i).hide();
-        counter++;
-        console.log(counter);
-
-        // Sounds in Array schreiben ---------------------
-        sounds[i] = new Audio('audio/' + i + '.mp3');
-        zaehlers[i] = 0;
-        lauts[i] = 0;
-        statuse[i] = 0;
-
-        // -----------------------------------------------
-}
-
-
-
-
-// ------------------------------------------------------------------------------------------------------------------------------
-
-//  Wenn Array durchlesen fertig ist, dann fade die nach und nach ein -------------------------------------------------------------
-
-if(counter == steine.length);
+function blendinproducts()
 {
-    counter = 0;
-    console.log("done");
-    setInterval(function(){
-       $('#' + counter).fadeTo(1000, 0.6);
-        counter++;
-        }, 200); 
+
+
+  for(i = 0; i <= steine.length-1; i++)
+  {  
+          $('#produkte').append("<div class='produkt' id='" + i + "'><img src='img/" + i + ".jpg' class='produktbild'><h3>" + steine[i] + "</h3></div>");
+          $('#' + i).hide();
+          counter++;
+          console.log(counter);
+  
+          // Sounds in Array schreiben ---------------------
+          sounds[i] = new Audio('audio/' + i + '.mp3');
+          zaehlers[i] = 0;
+          lauts[i] = 0;
+          statuse[i] = 0;
+  
+          // -----------------------------------------------
+  }
+  
+  
+  
+  
+  // ------------------------------------------------------------------------------------------------------------------------------
+  
+  //  Wenn Array durchlesen fertig ist, dann fade die nach und nach ein -------------------------------------------------------------
+  
+  if(counter == steine.length);
+  {
+      counter = 0;
+      console.log("done");
+      setInterval(function(){
+         $('#' + counter).fadeTo(1000, 0.6);
+          counter++;
+          }, 200); 
+  }
 }
+
+blendinproducts();
+
+
 
 // ---------------------------------------------------------------------------------------------------------------------------------
 
