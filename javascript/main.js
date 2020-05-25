@@ -10,7 +10,7 @@ $('#startbutton').click(()=>{
 // ----------------------------------------------------------------------------
 
 
-let buttonaudio = new Audio('audio/button.mp3');
+let buttonaudio = new Audio('audio/click2.mp3');
 $('button').click(()=>{
   buttonaudio.play();
 })
@@ -97,7 +97,7 @@ function blendinproducts()
       counter = 0;
       console.log("done");
       setInterval(function(){
-         $('#' + counter).fadeTo(1000, 0.6);
+         $('#' + counter).fadeTo(1000, 0.8);
           counter++;
           }, 200); 
   }
@@ -152,7 +152,7 @@ $(".produkt").mouseenter(function() {
 
 $(".produkt").mouseleave(function() {
 
-    $('#' + this.id).fadeTo(30, 0.6);
+    $('#' + this.id).fadeTo(30, 0.8);
 
 
     statuse[this.id] = 0;
