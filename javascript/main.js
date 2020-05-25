@@ -47,8 +47,11 @@ let steininfo = [
 
 
 $('#back').click(()=>{
-  $('#einzelprodukt').fadeTo(1000, 0).hide(1000);
-  $('#produkte').show(1).fadeTo(1000, 1);
+  // $('#einzelprodukt').fadeTo(1000, 0).hide(1000);
+  // $('#produkte').show(1).fadeTo(1000, 1);
+  $(".produkt").hide(1000);
+  
+  blendinproducts();
   
 })
 
@@ -97,7 +100,7 @@ function blendinproducts()
       counter = 0;
       console.log("done");
       setInterval(function(){
-         $('#' + counter).fadeTo(1000, 0.8);
+         $('#' + counter).fadeTo(1000, 1);
           counter++;
           }, 200); 
   }
@@ -115,8 +118,10 @@ blendinproducts();
 // Rechnungserstellung je nach mouseenter oder leave ------------------------------------------------------------------------------
 
 $(".produkt").mouseenter(function() {
-
-    $('#' + this.id).fadeTo(30, 1);
+    
+    // $('#' + this.id).clearQueue().fadeTo(100, 1);
+    $('.produkt:not(#' + this.id + ')').clearQueue().fadeTo(1000, 0.2);
+    
 
 
 
@@ -151,8 +156,8 @@ $(".produkt").mouseenter(function() {
 });
 
 $(".produkt").mouseleave(function() {
-
-    $('#' + this.id).fadeTo(30, 0.8);
+    $('.produkt:not(#' + this.id + ')').clearQueue().fadeTo(1000, 0.8);
+    // $('#' + this.id).clearQueue().fadeTo(100, 0.8);
 
 
     statuse[this.id] = 0;
