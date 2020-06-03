@@ -1,16 +1,31 @@
+var auswahl = "";
+
+$('.wahl').click(function(){
+  auswahl = this.id;
+});
+
+
 // Startbildschirm ausblenden -------------------------------------------------
 let hintergrund = new Audio('audio/breathee.mp3');
 
 $('#startbutton').click(()=>{
+  if(auswahl == "")
+  {
+    alert("Wählen Sie bitte zuerst ein Thema.")
+  }
+  else
+  {
     $('#full').fadeOut(3000).hide(1000);
     hintergrund.play();
     hintergrund.volume = 0.7;
+  }
+
     
 })
 // ----------------------------------------------------------------------------
 
 
-let buttonaudio = new Audio('audio/click2.mp3');
+let buttonaudio = new Audio('audio/click2_01.mp3');
 $('button').click(()=>{
   buttonaudio.play();
 })
@@ -87,9 +102,6 @@ function blendinproducts()
   
           // -----------------------------------------------
   }
-  
-  
-  
   
   // ------------------------------------------------------------------------------------------------------------------------------
   
