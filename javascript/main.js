@@ -61,14 +61,7 @@ let steininfo = [
 
 
 
-$('#back').click(()=>{
-  // $('#einzelprodukt').fadeTo(1000, 0).hide(1000);
-  // $('#produkte').show(1).fadeTo(1000, 1);
-  $(".produkt").hide(1000);
-  
-  blendinproducts();
-  
-})
+
 
 
 
@@ -211,8 +204,10 @@ $(".produkt").mouseleave(function() {
 
 $(".produkt").click(function()
 {
+    $('#einzelprodukt').html("");
     $('#produkte').fadeTo(1000, 0).hide(1);
     $('#einzelprodukt').show(1000).fadeTo(1000, 1);
+    $('#einzelprodukt').append("<img src='img/" + this.id + ".jpg' id='grossbild'><div id='infotext'><h1 id='einzelhead'>" + steine[this.id] + "</h1><hr><section id='beschreibung'>" + steininfo[this.id] + "</section></div>");
 })
 
 // ------------------------------------------------------------------------------------------------------------------------
@@ -220,7 +215,12 @@ $(".produkt").click(function()
 
 
 
-
+$('.back').click(()=>{
+  console.log('test');
+  $('#einzelprodukt').fadeTo(1000, 0).hide(1);
+  $('#produkte').show(1000).fadeTo(1000, 1);
+  
+})
 
 
 
