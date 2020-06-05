@@ -5,11 +5,15 @@ var auswahl = "";
 $('.wahl').click(function(){
   auswahl = this.id;
   console.log(auswahl);
+  if(auswahl == 'steine')
+  {
+      $('.hintergrundfarbe').css("background", "#000000");
+      $('.standard').css("background", "#1a1a1a");
+      $('.standard').css("font-family", "Overpass, sans-serif");
+  }
 });
 
 // ----------------------------------------------------------------------------
-
-
 
 
 
@@ -189,7 +193,7 @@ function blendinproducts()
           console.log(counter);
   
           // Sounds in Array schreiben ---------------------
-          sounds[i] = new Audio('audio/' + i + '.mp3');
+          sounds[i] = new Audio('audio/' + auswahl + '/' + i + '.mp3');
           zaehlers[i] = 0;
           lauts[i] = 0;
           statuse[i] = 0;

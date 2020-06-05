@@ -1,14 +1,14 @@
 *
 {
-    font-family: 'Overpass', sans-serif;
+    
     border-radius: 5px;
     color: #ffffff;
 }
 
-body
+/* body
 {
     background: #000000;
-}
+} */
 
 #backvid
 {
@@ -85,10 +85,10 @@ nav
     text-align: right;
 }
 
-.standard
+/* .standard
 {
     background: #1a1a1a;
-}
+} */
 
 
 
