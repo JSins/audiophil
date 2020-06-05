@@ -1,8 +1,18 @@
+// Shop-Auswahl --------------------------------------------------------------
+
 var auswahl = "";
 
 $('.wahl').click(function(){
   auswahl = this.id;
+  console.log(auswahl);
 });
+
+// ----------------------------------------------------------------------------
+
+
+
+
+
 
 
 // Startbildschirm ausblenden -------------------------------------------------
@@ -18,17 +28,27 @@ $('#startbutton').click(()=>{
     $('#full').fadeOut(3000).hide(1000);
     hintergrund.play();
     hintergrund.volume = 0.7;
+    blendinproducts();
   }
 
-    
 })
+
 // ----------------------------------------------------------------------------
+
+
+
+
 
 
 let buttonaudio = new Audio('audio/click2_01.mp3');
 $('button').click(()=>{
   buttonaudio.play();
 })
+
+
+
+
+
 
 
 // Arrays -------------------------
@@ -57,7 +77,88 @@ let steininfo = [
     ["Heilstein (Rosa)"],
     ["Heilstein (Braun)"]
 ];
+
+
 // ---------------------------------
+
+
+
+
+
+
+
+
+
+// Rechnungserstellung je nach mouseenter oder leave ------------------------------------------------------------------------------
+
+$(document).on('mouseenter', '.produkt', function() {
+
+  $('.produkt:not(#' + this.id + ')').clearQueue().fadeTo(1000, 0.2);
+  statuse[this.id] = 1;
+  zaehlers[this.id] = 0.01;
+  
+  sounds[this.id].play();
+  sounds[this.id].volume = 0;
+  var iddesobjects = this.id;
+
+  var int = setInterval( function() 
+  {
+      // Die Rechnung -----------------------------------------------------------
+      lauts[iddesobjects] = lauts[iddesobjects] + zaehlers[iddesobjects];
+      // ------------------------------------------------------------------------
+      
+      // Wert Runden und Lautstärke setzen --------------------------------------
+      console.log(Math.round(lauts[iddesobjects]*100)/100);
+      sounds[iddesobjects].volume = Math.round(lauts[iddesobjects]*100)/100;
+      // ------------------------------------------------------------------------
+
+    if (lauts[iddesobjects] >= 0.999 || statuse[iddesobjects] == 0)
+    {
+      clearInterval(int);
+      return;
+    }
+  }, 10);
+  
+});
+
+
+$(document).on('mouseleave', '.produkt', function() {
+  $('.produkt:not(#' + this.id + ')').clearQueue().fadeTo(1000, 0.8);
+
+  statuse[this.id] = 0;
+  zaehlers[this.id] = -0.01;
+
+  sounds[this.id].volume = 0;
+  var iddesobjects = this.id;
+
+  var int = setInterval( function() 
+  {
+      // Die Rechnung -----------------------------------------------------------
+      lauts[iddesobjects] = lauts[iddesobjects] + zaehlers[iddesobjects];
+      // ------------------------------------------------------------------------
+      
+      // Wert Runden und Lautstärke setzen --------------------------------------
+      console.log(Math.round(lauts[iddesobjects]*100)/100);
+      sounds[iddesobjects].volume = Math.round(lauts[iddesobjects]*100)/100;
+      // ------------------------------------------------------------------------
+
+    if (statuse[iddesobjects] == 1)
+    {
+      clearInterval(int);
+      return;
+    }
+    else if(lauts[iddesobjects] <= 0.001)
+    {
+      sounds[iddesobjects].pause();
+      clearInterval(int);
+      return;
+    }
+  }, 10);
+});
+
+// ---------------------------------------------------------------------------------------------------------------------------------
+
+
 
 
 
@@ -82,7 +183,7 @@ function blendinproducts()
 
   for(i = 0; i <= steine.length-1; i++)
   {  
-          $('#produkte').append("<div class='produkt' id='" + i + "'><img src='img/" + i + ".jpg' class='produktbild'><h3>" + steine[i] + "</h3></div>");
+          $('#produkte').append("<div class='produkt' id='" + i + "'><img src='img/" + auswahl + "/" + i + ".jpg' class='produktbild'><h3>" + steine[i] + "</h3></div>");
           $('#' + i).hide();
           counter++;
           console.log(counter);
@@ -111,116 +212,43 @@ function blendinproducts()
   }
 }
 
-blendinproducts();
-
-
-
 // ---------------------------------------------------------------------------------------------------------------------------------
 
 
 
 
-// Rechnungserstellung je nach mouseenter oder leave ------------------------------------------------------------------------------
-
-$(".produkt").mouseenter(function() {
-    
-    // $('#' + this.id).clearQueue().fadeTo(100, 1);
-    $('.produkt:not(#' + this.id + ')').clearQueue().fadeTo(1000, 0.2);
-    
 
 
 
-    statuse[this.id] = 1;
-    zaehlers[this.id] = 0.01;
-    
-    
-
-    sounds[this.id].play();
-    sounds[this.id].volume = 0;
-    var iddesobjects = this.id;
-
-    var int = setInterval( function() 
-    {
-        // Die Rechnung -----------------------------------------------------------
-        lauts[iddesobjects] = lauts[iddesobjects] + zaehlers[iddesobjects];
-        // ------------------------------------------------------------------------
-        
-        // Wert Runden und Lautstärke setzen --------------------------------------
-        console.log(Math.round(lauts[iddesobjects]*100)/100);
-        sounds[iddesobjects].volume = Math.round(lauts[iddesobjects]*100)/100;
-        // ------------------------------------------------------------------------
-
-      if (lauts[iddesobjects] >= 0.999 || statuse[iddesobjects] == 0)
-      {
-        clearInterval(int);
-        return;
-      }
-    }, 10);
-    
-
-});
-
-$(".produkt").mouseleave(function() {
-    $('.produkt:not(#' + this.id + ')').clearQueue().fadeTo(1000, 0.8);
-    // $('#' + this.id).clearQueue().fadeTo(100, 0.8);
 
 
-    statuse[this.id] = 0;
-    zaehlers[this.id] = -0.01;
-
-    sounds[this.id].volume = 0;
-    var iddesobjects = this.id;
-
-    var int = setInterval( function() 
-    {
-        // Die Rechnung -----------------------------------------------------------
-        lauts[iddesobjects] = lauts[iddesobjects] + zaehlers[iddesobjects];
-        // ------------------------------------------------------------------------
-        
-        // Wert Runden und Lautstärke setzen --------------------------------------
-        console.log(Math.round(lauts[iddesobjects]*100)/100);
-        sounds[iddesobjects].volume = Math.round(lauts[iddesobjects]*100)/100;
-        // ------------------------------------------------------------------------
-
-      if (statuse[iddesobjects] == 1)
-      {
-        clearInterval(int);
-        return;
-      }
-      else if(lauts[iddesobjects] <= 0.001)
-      {
-        sounds[iddesobjects].pause();
-        clearInterval(int);
-        return;
-      }
-    }, 10);
-    
-});
-
-// ---------------------------------------------------------------------------------------------------------------------------------
 
 
 // Produkt aufrufen -------------------------------------------------------------------------------------------------------
 
-$(".produkt").click(function()
-{
+$(document).on('click', '.produkt', function() {
     $('#einzelprodukt').html("");
     $('#produkte').fadeTo(1000, 0).hide(1);
     $('#einzelprodukt').show(1000).fadeTo(1000, 1);
     $('#einzelprodukt').append("<img src='img/" + this.id + ".jpg' id='grossbild'><div id='infotext'><h1 id='einzelhead'>" + steine[this.id] + "</h1><hr><section id='beschreibung'>" + steininfo[this.id] + "</section></div>");
-})
+});
 
 // ------------------------------------------------------------------------------------------------------------------------
 
 
 
 
+
+
+
+// Zurück-Knopf -----------------------------------------------------------------------------------------------------------
+
 $('.back').click(()=>{
   console.log('test');
   $('#einzelprodukt').fadeTo(1000, 0).hide(1);
   $('#produkte').show(1000).fadeTo(1000, 1);
   
-})
+});
 
-
+// -----------------------------------------------------------------------------------------------------------------------
 
