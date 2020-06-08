@@ -62,10 +62,10 @@ let steine = [
     ["Heilstein (Grün)"],
     ["Heilstein (Violett)"],
     ["Heilstein (Schwarz)"],
-    ["Heilstein (Magenta)"],
+    ["Heilstein (Weiß)"],
     ["Heilstein (Gelb)"],
     ["Heilstein (Eisblau)"],
-    ["Heilstein (Rosa)"],
+    ["Heilstein (Okka)"],
     ["Heilstein (Braun)"]
 ];
 
@@ -82,12 +82,22 @@ let steininfo = [
     ["Heilstein (Braun)"]
 ];
 
-
+let warenkorbarray = [];
 // ---------------------------------
 
 
 
+// Warenkorb -----------------------------------------------------------------------------------------
 
+
+function warenkorbrefresh()
+{
+  $('#warenkorb').html('Warenkorb (' + warenkorbarray.length + ')');
+}
+
+warenkorbrefresh();
+
+// ---------------------------------------------------------------------------------------------------
 
 
 
@@ -99,7 +109,7 @@ $(document).on('mouseenter', '.produkt', function() {
 
   $('.produkt:not(#' + this.id + ')').clearQueue().fadeTo(1000, 0.2);
   statuse[this.id] = 1;
-  zaehlers[this.id] = 0.01;
+  zaehlers[this.id] = 0.02;
   
   sounds[this.id].play();
   sounds[this.id].volume = 0;
@@ -112,7 +122,7 @@ $(document).on('mouseenter', '.produkt', function() {
       // ------------------------------------------------------------------------
       
       // Wert Runden und Lautstärke setzen --------------------------------------
-      console.log(Math.round(lauts[iddesobjects]*100)/100);
+      console.log(iddesobjects + ' ' + Math.round(lauts[iddesobjects]*100)/100);
       sounds[iddesobjects].volume = Math.round(lauts[iddesobjects]*100)/100;
       // ------------------------------------------------------------------------
 
@@ -121,7 +131,7 @@ $(document).on('mouseenter', '.produkt', function() {
       clearInterval(int);
       return;
     }
-  }, 10);
+  }, 20);
   
 });
 
@@ -130,7 +140,7 @@ $(document).on('mouseleave', '.produkt', function() {
   $('.produkt:not(#' + this.id + ')').clearQueue().fadeTo(1000, 0.8);
 
   statuse[this.id] = 0;
-  zaehlers[this.id] = -0.01;
+  zaehlers[this.id] = -0.02;
 
   sounds[this.id].volume = 0;
   var iddesobjects = this.id;
@@ -142,7 +152,7 @@ $(document).on('mouseleave', '.produkt', function() {
       // ------------------------------------------------------------------------
       
       // Wert Runden und Lautstärke setzen --------------------------------------
-      console.log(Math.round(lauts[iddesobjects]*100)/100);
+      console.log(iddesobjects + ' ' + Math.round(lauts[iddesobjects]*100)/100);
       sounds[iddesobjects].volume = Math.round(lauts[iddesobjects]*100)/100;
       // ------------------------------------------------------------------------
 
@@ -151,13 +161,14 @@ $(document).on('mouseleave', '.produkt', function() {
       clearInterval(int);
       return;
     }
-    else if(lauts[iddesobjects] <= 0.001)
+    
+    if(lauts[iddesobjects] < 0.001)
     {
       sounds[iddesobjects].pause();
       clearInterval(int);
       return;
     }
-  }, 10);
+  }, 20);
 });
 
 // ---------------------------------------------------------------------------------------------------------------------------------
@@ -226,11 +237,13 @@ function blendinproducts()
 
 
 
-
+let produktid;
 
 // Produkt aufrufen -------------------------------------------------------------------------------------------------------
 
 $(document).on('click', '.produkt', function() {
+    zaehlers[this.id] = 0;
+    produktid = this.id;
     $('#einzelprodukt').html("");
     $('#produkte').fadeTo(1000, 0).hide(1);
     $('#einzelprodukt').show(1000).fadeTo(1000, 1);
@@ -257,10 +270,12 @@ $('.back').click(()=>{
   zurück();
 });
 
-let warenkorbanzahl = 0;
+
 
 $(document).on('click', '#warenkorb', function() {
-  warenkorbanzahl++;
+  warenkorbarray.push(produktid);
+  console.log(warenkorbarray);
+  warenkorbrefresh();
   zurück();
 });
 
