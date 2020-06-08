@@ -234,7 +234,7 @@ $(document).on('click', '.produkt', function() {
     $('#einzelprodukt').html("");
     $('#produkte').fadeTo(1000, 0).hide(1);
     $('#einzelprodukt').show(1000).fadeTo(1000, 1);
-    $('#einzelprodukt').append("<img src='img/" + this.id + ".jpg' id='grossbild'><div id='infotext'><h1 id='einzelhead'>" + steine[this.id] + "</h1><hr><section id='beschreibung'>" + steininfo[this.id] + "</section></div>");
+    $('#einzelprodukt').append("<img src='img/" + auswahl + "/" + this.id + ".jpg' id='grossbild'><div id='infotext'><h1 id='einzelhead'>" + steine[this.id] + "</h1><hr><section id='beschreibung'>" + steininfo[this.id] + "</section><button id='warenkorb'>In den Warenkorb</button></div>");
 });
 
 // ------------------------------------------------------------------------------------------------------------------------
@@ -247,11 +247,21 @@ $(document).on('click', '.produkt', function() {
 
 // Zurück-Knopf -----------------------------------------------------------------------------------------------------------
 
-$('.back').click(()=>{
-  console.log('test');
+function zurück()
+{
   $('#einzelprodukt').fadeTo(1000, 0).hide(1);
   $('#produkte').show(1000).fadeTo(1000, 1);
-  
+}
+
+$('.back').click(()=>{
+  zurück();
+});
+
+let warenkorbanzahl = 0;
+
+$(document).on('click', '#warenkorb', function() {
+  warenkorbanzahl++;
+  zurück();
 });
 
 // -----------------------------------------------------------------------------------------------------------------------

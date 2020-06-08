@@ -58,6 +58,7 @@ button:hover
 {
     color: #ccb2ee;
     background: #68587e;
+    cursor: pointer;
 }
 
 #startbutton
