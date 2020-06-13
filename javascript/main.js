@@ -38,6 +38,19 @@ let games = [
 ["Halo - Combat Evolved"]
 ];
 
+let gamesinfo = [
+  ["Stein des Feuers"],
+  ["Heilstein (Blau)"],
+  ["Heilstein (Grün)"],
+  ["Heilstein (Violett)"],
+  ["Heilstein (Schwarz)"],
+  ["Heilstein (Magenta)"],
+  ["Heilstein (Gelb)"],
+  ["Heilstein (Orange)"],
+  ["Heilstein (Rosa)"],
+  ["Heilstein (Braun)"]
+];
+
 let warenkorbarray = [];
 // ---------------------------------
 
@@ -59,21 +72,19 @@ $('.wahl').click(function(){
   {
     produktanzahl = steine.length;
     $('.hintergrundfarbe').css("background", "#000000");
-    $('.standard').css("background", "#1a1a1a");
     $('.standard').css("font-family", "Overpass, sans-serif");
   }
   else if(auswahl == 'games')
   {
     produktanzahl = games.length;
     $('.hintergrundfarbe').css("background", "#000000");
-    $('.standard').css("background", "#1a1a1a");
-    $('.standard').css("font-family", "Press Start 2P, cursive");
+    $('.standard').css("font-family", "Bebas Neue, cursive");
+    $('p').css("font-family", "Overpass, sans-serif");
   }
   else if(auswahl == 'fitness')
   {
     produktanzahl = fitness.length;
     $('.hintergrundfarbe').css("background", "#000000");
-    $('.standard').css("background", "#1a1a1a");
     $('.standard').css("font-family", "Overpass, sans-serif");
   }
 });
@@ -127,6 +138,7 @@ let buttonaudio = new Audio('audio/click2_01.mp3');
 $('button').click(()=>{
   buttonaudio.play();
 })
+
 
 
 
@@ -256,6 +268,25 @@ var neu;
 function blendinproducts()
 {
 
+  // Statische Elemente laden ---------------------------------------------------------
+
+  if(auswahl == 'steine')
+  {
+    $('header').append("<div class='kopf' id='headsteine'><h1>Kahnwald Heilsteine</h1></div>");
+    $('#beschreibungstext').append("<h1>Lassen Sie sich natürlich heilen!</h1><hr><p>Unsere Heilsteine sind mit die besten auf dem Markt. Erleben Sie hier ein einzigartiges Shopping-Erlebnis und lassen Sie sich ganz auf die heilende Ausstrahlung unserer Steine ein.</p>");
+  }
+  else if(auswahl == 'games')
+  {
+    $('header').append("<div class='kopf' id='headgames'><h1>Kahnwald Games</h1></div>");
+    $('#beschreibungstext').append("<h1>Spielen bis zum Limit!</h1><hr><p>Hier bekommst du alle neuen Top-Games. Erlebe nur hier einen einzigartigen Vorgeschmack auf das, was dich in den virtuellen Welten erwartet!</p>");
+  }
+  else if(auswahl == 'fitness')
+  {
+    
+  }
+
+  // ----------------------------------------------------------------------------------
+
 
   for(i = 0; i <= produktanzahl-1; i++)
   {  
@@ -311,9 +342,11 @@ function blendinproducts()
 
 
 
-let produktid;
+
 
 // Produkt aufrufen -------------------------------------------------------------------------------------------------------
+
+let produktid;
 
 $(document).on('click', '.produkt', function() {
     zaehlers[this.id] = 0;
@@ -321,7 +354,18 @@ $(document).on('click', '.produkt', function() {
     $('#einzelprodukt').html("");
     $('#produkte').fadeTo(1000, 0).hide(1);
     $('#einzelprodukt').show(1000).fadeTo(1000, 1);
-    $('#einzelprodukt').append("<img src='img/" + auswahl + "/" + this.id + ".jpg' id='grossbild'><div id='infotext'><h1 id='einzelhead'>" + steine[this.id] + "</h1><hr><section id='beschreibung'>" + steininfo[this.id] + "</section><button id='warenkorb'>In den Warenkorb</button></div>");
+    if(auswahl == 'steine')
+    {
+      $('#einzelprodukt').append("<img src='img/" + auswahl + "/" + this.id + ".jpg' id='grossbild'><div id='infotext'><h1 id='einzelhead'>" + steine[this.id] + "</h1><hr><section id='beschreibung'>" + steininfo[this.id] + "</section><button id='warenkorb'>In den Warenkorb</button></div>");
+    }
+    else if(auswahl == 'games')
+    {
+      $('#einzelprodukt').append("<img src='img/" + auswahl + "/" + this.id + ".jpg' id='grossbild'><div id='infotext'><h1 id='einzelhead'>" + games[this.id] + "</h1><hr><section id='beschreibung'>" + gamesinfo[this.id] + "</section><button id='warenkorb'>In den Warenkorb</button></div>");
+    }
+    else if(auswahl == 'fitness')
+    {
+      $('#einzelprodukt').append("<img src='img/" + auswahl + "/" + this.id + ".jpg' id='grossbild'><div id='infotext'><h1 id='einzelhead'>" + fitness[this.id] + "</h1><hr><section id='beschreibung'>" + fitnessinfo[this.id] + "</section><button id='warenkorb'>In den Warenkorb</button></div>");
+    }
 });
 
 // ------------------------------------------------------------------------------------------------------------------------
