@@ -169,6 +169,33 @@ article
     opacity: 0;
 }
 
+#warenkorbbox
+{
+    display: none;
+    opacity: 0;
+}
+
+.warenkorbprodukt
+{
+    width: 100%;
+    display: flex;
+    margin-bottom: 10px;
+
+}
+
+.warenkorbproduktbild
+{
+    height: 100px;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.warenkorbproduktbeschriftung
+{
+    flex: 4;
+    text-align: left;
+}
+
 #grossbild
 {
     height: 300px;

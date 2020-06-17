@@ -39,16 +39,16 @@ let games = [
 ];
 
 let gamesinfo = [
-  ["Stein des Feuers"],
-  ["Heilstein (Blau)"],
-  ["Heilstein (Grün)"],
-  ["Heilstein (Violett)"],
-  ["Heilstein (Schwarz)"],
-  ["Heilstein (Magenta)"],
-  ["Heilstein (Gelb)"],
-  ["Heilstein (Orange)"],
-  ["Heilstein (Rosa)"],
-  ["Heilstein (Braun)"]
+  ["Ace Combat ist eine Serie von arcadelastigen Videospielen der japanischen Softwarefirma Namco für verschiedene Plattformen aus der Kategorie der militärischen Flugsimulationen bzw. Actionspiel.Der erste Teil erschien 1995 unter dem Titel Air Combat für die erste Sony PlayStation und war so erfolgreich, dass gleich mehrere Sequels, später auch auf der PlayStation 2, erschienen."],
+  ["Ori and the Blind Forest ist ein Jump-’n’-Run-Spiel, das von Moon Studios, einem unabhängigen Entwicklerstudio aus Österreich, entwickelt wurde und von Microsoft Studios vertrieben wird. Das Spiel wurde am 11. März 2015 für Xbox One und Windows als Download-Titel veröffentlicht. Für Ende 2015 war die Veröffentlichung einer Version für Xbox 360 angekündigt."],
+  ["Crysis 3 spielt im Jahre 2047 im völlig verwucherten und zerstörten New York. In Crysis 2 begeht Prophet Suizid, aber da sein Geist in seinem Nanosuit weiterlebt, wurde der Körper von Alcatraz mit seinem Geist verbunden. Man untersucht zusammen mit seinem alten Freund Psycho im Libertydome, einer über New York errichteten Kuppel zum Einsperren des Manhattan-Virus und der Ceph, die Aktivität der C.E.L.L., einer Elite-Privatarmee von Crynet Systems."],
+  ["Minecraft ist ein Open-World-Spiel (ursprünglich Indie-Open-World-Spiel), das vom schwedischen Programmierer Markus „Notch“ Persson erschaffen und von dessen Firma Mojang, welche im September 2014 für 2,5 Milliarden Dollar (etwa 1,9 Milliarden Euro) durch den Microsoft-Konzern aufgekauft wurde,[18] veröffentlicht wurde und bis heute weiterentwickelt wird."],
+  ["Battlefield 1 spielt zur Zeit des Ersten Weltkrieges. Die Schauplätze sind unter anderem die Westfront, die italienischen Alpen sowie die arabische Wüste. Zeitgenössische Fahr- und Flugzeuge wie beispielsweise Mark-V-Panzer und Doppeldecker, sowie Kavallerie sind spielbar. Auch gibt es Giftgasangriffe. Der Nahkampf steht mehr als in den Vorgängerspielen im Vordergrund."],
+  ["Die Handlung des Spiels setzt circa 200 Jahre nach den Ereignissen in The Elder Scrolls IV: Oblivion an. So finden sich auch einige Bezüge zum Vorgängerteil wieder. Den Ort der Geschehnisse bildet die nördlich von Cyrodiil gelegene Provinz Himmelsrand (Skyrim). Der Hintergrund ist eine Weissagung der für die Serie namensgebenden „Elder Scrolls“ über die Rückkehr der Drachen."],
+  ["Das Spiel beginnt vor der Schlacht von Endor auf der Invincible Faith, einem Großkampfschiff der Rebellenallianz, wo Iden gefangen gehalten und vernommen wird. Vor dem Einsetzen der Handlung fing das Schiff eine imperiale Botschaft ab, die, einmal entschlüsselt, die Rebellen vor der Falle des Imperators Palpatine über dem Waldmond Endor warnen würde."],
+  ["Das AssaultCube-Projekt begann im Juli 2004. Der erste offizielle Release war im November 2006 unter dem Namen „ActionCube“. Der Plan der Entwickler war, die Einfachheit von Cube in eine realistischere Umgebung zu übertragen.[1]Auf Wunsch der Entwickler von Action Quake 2 wurde das Spiel am 6. Mai 2007 in AssaultCube umbenannt."],
+  ["Die Handlung von Fallout 4 spielt im Jahr 2287, zehn Jahre nach den Geschehnissen von Fallout 3 und sechs Jahre nach Fallout: New Vegas. Fallout 4 handelt in einer postapokalyptischen Spielwelt in der Gegend von Boston und Teilen Neuenglands, genannt „Commonwealth“."],
+  ["Das Spiel spielt im Jahre 2552, als das Volk der Erde aufgrund der Überbevölkerung gezwungen war, auf anderen Planeten zu siedeln. 32 Jahre vorher war der Kontakt zu einer äußeren Kolonie namens „Harvest“ verloren gegangen. Als ein Kampfverband zur Erkundung geschickt wurde, kam nur ein einziges schwer beschädigtes Schiff zurück. Die Crew berichtete von einem „unbesiegbaren außerirdischen Schiff“, das die menschlichen Streitkräfte mühelos vernichtete. Das war die erste Begegnung mit der Allianz."]
 ];
 
 let warenkorbarray = [];
@@ -314,7 +314,7 @@ function blendinproducts()
     lauts[i] = 0;
     statuse[i] = 0;
   
-          // -----------------------------------------------
+    // -----------------------------------------------
   }
   
   // ------------------------------------------------------------------------------------------------------------------------------
@@ -337,7 +337,17 @@ function blendinproducts()
 
 
 
+function blendinwarenkorb()
+{
+  $('#warenkorbbox').html("");
+  for(i = 0; i <= warenkorbarray.length-1; i++)
+  {
+    $('#warenkorbbox').append("<div class='warenkorbprodukt' id='" + i + "'><img src='img/" + auswahl + "/" + warenkorbarray[i] + ".jpg' class='warenkorbproduktbild'><div class='warenkorbproduktbeschriftung'><h3>" + games[warenkorbarray[i]] + "</h3></div></div>");
+    console.log(warenkorbarray[i]);
+  }
 
+  $('#warenkorbbox').append("<button id='kaufen'>Jetzt kaufen!</button>");
+}
 
 
 
@@ -356,15 +366,15 @@ $(document).on('click', '.produkt', function() {
     $('#einzelprodukt').show(1000).fadeTo(1000, 1);
     if(auswahl == 'steine')
     {
-      $('#einzelprodukt').append("<img src='img/" + auswahl + "/" + this.id + ".jpg' id='grossbild'><div id='infotext'><h1 id='einzelhead'>" + steine[this.id] + "</h1><hr><section id='beschreibung'>" + steininfo[this.id] + "</section><button id='warenkorb'>In den Warenkorb</button></div>");
+      $('#einzelprodukt').append("<img src='img/" + auswahl + "/" + this.id + ".jpg' id='grossbild'><div id='infotext'><h1 id='einzelhead'>" + steine[this.id] + "</h1><hr><section id='beschreibung'>" + steininfo[this.id] + "</section><button id='inwarenkorb'>In den Warenkorb</button></div>");
     }
     else if(auswahl == 'games')
     {
-      $('#einzelprodukt').append("<img src='img/" + auswahl + "/" + this.id + ".jpg' id='grossbild'><div id='infotext'><h1 id='einzelhead'>" + games[this.id] + "</h1><hr><section id='beschreibung'>" + gamesinfo[this.id] + "</section><button id='warenkorb'>In den Warenkorb</button></div>");
+      $('#einzelprodukt').append("<img src='img/" + auswahl + "/" + this.id + ".jpg' id='grossbild'><div id='infotext'><h1 id='einzelhead'>" + games[this.id] + "</h1><hr><section id='beschreibung'>" + gamesinfo[this.id] + "</section><button id='inwarenkorb'>In den Warenkorb</button></div>");
     }
     else if(auswahl == 'fitness')
     {
-      $('#einzelprodukt').append("<img src='img/" + auswahl + "/" + this.id + ".jpg' id='grossbild'><div id='infotext'><h1 id='einzelhead'>" + fitness[this.id] + "</h1><hr><section id='beschreibung'>" + fitnessinfo[this.id] + "</section><button id='warenkorb'>In den Warenkorb</button></div>");
+      $('#einzelprodukt').append("<img src='img/" + auswahl + "/" + this.id + ".jpg' id='grossbild'><div id='infotext'><h1 id='einzelhead'>" + fitness[this.id] + "</h1><hr><section id='beschreibung'>" + fitnessinfo[this.id] + "</section><button id='inwarenkorb'>In den Warenkorb</button></div>");
     }
 });
 
@@ -380,6 +390,7 @@ $(document).on('click', '.produkt', function() {
 
 function zurück()
 {
+  $('#warenkorbbox').fadeTo(1000, 0).hide(1);
   $('#einzelprodukt').fadeTo(1000, 0).hide(1);
   $('#produkte').show(1000).fadeTo(1000, 1);
 }
@@ -388,13 +399,32 @@ $('.back').click(()=>{
   zurück();
 });
 
+// -----------------------------------------------------------------------------------------------------------------------
 
 
-$(document).on('click', '#warenkorb', function() {
+
+// In den Warenkorb legen ------------------------------------------------------------------------------------------------
+
+$(document).on('click', '#inwarenkorb', function() {
   warenkorbarray.push(produktid);
   console.log(warenkorbarray);
   warenkorbrefresh();
   zurück();
+});
+
+// -----------------------------------------------------------------------------------------------------------------------
+
+
+
+// Warenkorb aufrufen ----------------------------------------------------------------------------------------------------
+
+$('#warenkorb').click(function()
+{
+
+  blendinwarenkorb();
+  $('#einzelprodukt').html("");
+  $('#produkte').fadeTo(1000, 0).hide(1);
+  $('#warenkorbbox').show(1000).fadeTo(1000, 1);
 });
 
 // -----------------------------------------------------------------------------------------------------------------------
