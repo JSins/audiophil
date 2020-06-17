@@ -135,9 +135,12 @@ $('#startbutton').click(()=>{
 
 
 let buttonaudio = new Audio('audio/click2_01.mp3');
-$('button').click(()=>{
+$(document).on('click', 'button', function(){
   buttonaudio.play();
 })
+
+
+
 
 
 
@@ -342,8 +345,20 @@ function blendinwarenkorb()
   $('#warenkorbbox').html("");
   for(i = 0; i <= warenkorbarray.length-1; i++)
   {
-    $('#warenkorbbox').append("<div class='warenkorbprodukt' id='" + i + "'><img src='img/" + auswahl + "/" + warenkorbarray[i] + ".jpg' class='warenkorbproduktbild'><div class='warenkorbproduktbeschriftung'><h3>" + games[warenkorbarray[i]] + "</h3></div></div>");
-    console.log(warenkorbarray[i]);
+    if(auswahl == 'steine')
+    {
+      $('#warenkorbbox').append("<div class='warenkorbprodukt' id='" + i + "'><img src='img/" + auswahl + "/" + warenkorbarray[i] + ".jpg' class='warenkorbproduktbild'><div class='warenkorbproduktbeschriftung'><h3>" + steine[warenkorbarray[i]] + "</h3></div></div>");
+    }
+    else if(auswahl == 'games')
+    {
+      $('#warenkorbbox').append("<div class='warenkorbprodukt' id='" + i + "'><img src='img/" + auswahl + "/" + warenkorbarray[i] + ".jpg' class='warenkorbproduktbild'><div class='warenkorbproduktbeschriftung'><h3>" + games[warenkorbarray[i]] + "</h3></div></div>");
+    }
+    else if(auswahl == 'fitness')
+    {
+      $('#warenkorbbox').append("<div class='warenkorbprodukt' id='" + i + "'><img src='img/" + auswahl + "/" + warenkorbarray[i] + ".jpg' class='warenkorbproduktbild'><div class='warenkorbproduktbeschriftung'><h3>" + fitness[warenkorbarray[i]] + "</h3></div></div>");
+    }
+    {}
+    
   }
 
   $('#warenkorbbox').append("<button id='kaufen'>Jetzt kaufen!</button>");
@@ -426,6 +441,21 @@ $('#warenkorb').click(function()
   $('#produkte').fadeTo(1000, 0).hide(1);
   $('#warenkorbbox').show(1000).fadeTo(1000, 1);
 });
+
+// -----------------------------------------------------------------------------------------------------------------------
+
+
+
+// Kaufen und Credits ----------------------------------------------------------------------------------------------------
+
+let katsching = new Audio('audio/katsching.mp3');
+$(document).on('click', '#kaufen', function(){
+  console.log('gekauft');
+  katsching.play();
+
+  $('#fullinhalt').html("Vielen Dank fürs Mitmachen! Bitte füllen Sie nun den beigefügten Fragebogen aus.<br>Wenn Sie von vorn beginnen wollen, drücken sie nun F5.");
+  $('#full').fadeIn(3000);
+})
 
 // -----------------------------------------------------------------------------------------------------------------------
 
