@@ -125,6 +125,13 @@ header
     background-image: url(../img/gamesdark.jpg);
 }
 
+#headwein
+{
+    background-image: url(../img/weindark.jpg);
+    background-position:left bottom;
+
+}
+
 #beschreibungstext
 {
     font-family: 'PT Sans', sans-serif;

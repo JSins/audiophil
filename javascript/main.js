@@ -51,6 +51,32 @@ let gamesinfo = [
   ["Das Spiel spielt im Jahre 2552, als das Volk der Erde aufgrund der Überbevölkerung gezwungen war, auf anderen Planeten zu siedeln. 32 Jahre vorher war der Kontakt zu einer äußeren Kolonie namens „Harvest“ verloren gegangen. Als ein Kampfverband zur Erkundung geschickt wurde, kam nur ein einziges schwer beschädigtes Schiff zurück. Die Crew berichtete von einem „unbesiegbaren außerirdischen Schiff“, das die menschlichen Streitkräfte mühelos vernichtete. Das war die erste Begegnung mit der Allianz."]
 ];
 
+let wein = [
+  ["Pinot Noir"],
+  ["Cabernet Sauvignon Yaku"],
+  ["Shiraz/Viognier Reserve"],
+  ["Messias Selection Douro"],
+  ["Shiraz"],
+  ["Classico Cabernet Sauvignon"],
+  ["Giorgio"],
+  ["Pinotage"],
+  ["Teanum Favugne Red 2018"],
+  ["Vento Nero di Troia"]
+  ];
+
+  let weininfo = [
+    ["Der Wein wurde zu 100% in neuen, französischen Eichenbarriques für 13 Monate ausgebaut. In der Nase und am Gaumen zeigt er sich mit ausgeprägtem aber nicht zu beunruhigendem, röstigem Charakter."],
+    ["Cassis und Paprika sind die typischen Aromen des Cabernet Sauvignon. Ganz und gar untypisch sind die Fülle, Klarheit und Komplexität, mit der sich diese Aromen hier präsentieren."],
+    ["Saftige Noten reifer Pflaume und schwarzer Johannisbeere werden bereichert durch Spuren von Kaffee und Schokolade. Weiche Tannine verleihen dem Arabella Shiraz / Viognier Reserve eine feste Struktur und ein wunderbar weiches, anhaltendes Finale."],
+    ["Der Messias Selection Douro Tinto präsentiert sich konzentriert und fest gebaut mit dunkler Beerenfrucht, herber Würze und kräftigem Tannin. Mit Luft wird er geschliffener und saftiger - das ist typisches, urtümliches Portugal!"],
+    ["Von tiefem Burgunderrot und mit auffordernden Aromen von Vanille und Mokka, besticht das Bouquet des Arabella Shiraz. Der Gaumen belohnt mit anhaltenden Nuancen von Lakritz und reifer Schwarzkirsche, welche unterstützt werden durch weiches, würziges Tannin."],
+    ["Giorgia Dalla Cia baut mit viel Dolce Vita und Innovation ein großartiges Weinsortiment aus - dieser Dalla Cia Classico Cabernet Sauvignon ist dabei nur ein Beispiel, aber ein ganz besonderes."],
+    ["Dieser Rotwein ist üppig, gut strukturiert und körperreich. Sein Mundgefühl ist wohlwollend und sein Nachhall lang. Er besitzt tolles Alterungspotential."],
+    ["Im Glas zeigt der Raka Pinotage eine tintenähnliche Farbe.In der Nase erleben wir unmissverständlich Pinotage. Deutlich lassen sich Aromen von dunklen Beeren, grüner Bananenschale und weicher Vanille vom Holzfassausbau ausmachen."],
+    ["Dieser kräftige Rotwein wurde nach einem heißen, trockenen Wind benannt. Der Favugne spielte bereits in der griechischen Mythologie eine besondere Rolle."],
+    ["Frischer Wind in der Weinlandschaft Apuliens! Der Vento Nero di Troia Primitivo verwöhnt das Auge mit seiner strahlend roten Farbe."]
+  ];
+
 let warenkorbarray = [];
 // ---------------------------------
 
@@ -81,9 +107,9 @@ $('.wahl').click(function(){
     $('.standard').css("font-family", "Bebas Neue, cursive");
     $('p').css("font-family", "Overpass, sans-serif");
   }
-  else if(auswahl == 'fitness')
+  else if(auswahl == 'wein')
   {
-    produktanzahl = fitness.length;
+    produktanzahl = wein.length;
     $('.hintergrundfarbe').css("background", "#000000");
     $('.standard').css("font-family", "Overpass, sans-serif");
   }
@@ -116,7 +142,7 @@ $('#startbutton').click(()=>{
     {
       
     }
-    if(auswahl == 'fitness')
+    if(auswahl == 'wein')
     {
       
     }
@@ -283,9 +309,10 @@ function blendinproducts()
     $('header').append("<div class='kopf' id='headgames'><h1>Kahnwald Games</h1></div>");
     $('#beschreibungstext').append("<h1>Spielen bis zum Limit!</h1><hr><p>Hier bekommst du alle neuen Top-Games. Erlebe nur hier einen einzigartigen Vorgeschmack auf das, was dich in den virtuellen Welten erwartet!</p>");
   }
-  else if(auswahl == 'fitness')
+  else if(auswahl == 'wein')
   {
-    
+    $('header').append("<div class='kopf' id='headwein'><h1>Kahnwald Wein</h1></div>");
+    $('#beschreibungstext').append("<h1>Exklusiver Wein - Einzigartiger Genuss!</h1><hr><p>Unser Wein ist handverlesen und schmeckt sogar den Göttern. Testen Sie uns aus und lassen Sie sich von unserem qualitativen Wein verführen.</p>");
   }
 
   // ----------------------------------------------------------------------------------
@@ -301,9 +328,9 @@ function blendinproducts()
     {
       $('#produkte').append("<div class='produkt' id='" + i + "'><img src='img/" + auswahl + "/" + i + ".jpg' class='produktbild'><h3>" + games[i] + "</h3></div>");
     }
-    else if(auswahl == 'fitness')
+    else if(auswahl == 'wein')
     {
-      $('#produkte').append("<div class='produkt' id='" + i + "'><img src='img/" + auswahl + "/" + i + ".jpg' class='produktbild'><h3>" + fitness[i] + "</h3></div>");
+      $('#produkte').append("<div class='produkt' id='" + i + "'><img src='img/" + auswahl + "/" + i + ".jpg' class='produktbild'><h3>" + wein[i] + "</h3></div>");
     }
 
 
@@ -353,15 +380,19 @@ function blendinwarenkorb()
     {
       $('#warenkorbbox').append("<div class='warenkorbprodukt' id='" + i + "'><img src='img/" + auswahl + "/" + warenkorbarray[i] + ".jpg' class='warenkorbproduktbild'><div class='warenkorbproduktbeschriftung'><h3>" + games[warenkorbarray[i]] + "</h3></div></div>");
     }
-    else if(auswahl == 'fitness')
+    else if(auswahl == 'wein')
     {
-      $('#warenkorbbox').append("<div class='warenkorbprodukt' id='" + i + "'><img src='img/" + auswahl + "/" + warenkorbarray[i] + ".jpg' class='warenkorbproduktbild'><div class='warenkorbproduktbeschriftung'><h3>" + fitness[warenkorbarray[i]] + "</h3></div></div>");
+      $('#warenkorbbox').append("<div class='warenkorbprodukt' id='" + i + "'><img src='img/" + auswahl + "/" + warenkorbarray[i] + ".jpg' class='warenkorbproduktbild'><div class='warenkorbproduktbeschriftung'><h3>" + wein[warenkorbarray[i]] + "</h3></div></div>");
     }
     {}
     
   }
-
-  $('#warenkorbbox').append("<button id='kaufen'>Jetzt kaufen!</button>");
+  console.log(warenkorbarray.length);
+  if(warenkorbarray.length > 0)
+  {
+    $('#warenkorbbox').append("<button id='kaufen'>Jetzt kaufen!</button>");
+  }
+  
 }
 
 
@@ -387,9 +418,9 @@ $(document).on('click', '.produkt', function() {
     {
       $('#einzelprodukt').append("<img src='img/" + auswahl + "/" + this.id + ".jpg' id='grossbild'><div id='infotext'><h1 id='einzelhead'>" + games[this.id] + "</h1><hr><section id='beschreibung'>" + gamesinfo[this.id] + "</section><button id='inwarenkorb'>In den Warenkorb</button></div>");
     }
-    else if(auswahl == 'fitness')
+    else if(auswahl == 'wein')
     {
-      $('#einzelprodukt').append("<img src='img/" + auswahl + "/" + this.id + ".jpg' id='grossbild'><div id='infotext'><h1 id='einzelhead'>" + fitness[this.id] + "</h1><hr><section id='beschreibung'>" + fitnessinfo[this.id] + "</section><button id='inwarenkorb'>In den Warenkorb</button></div>");
+      $('#einzelprodukt').append("<img src='img/" + auswahl + "/" + this.id + ".jpg' id='grossbild'><div id='infotext'><h1 id='einzelhead'>" + wein[this.id] + "</h1><hr><section id='beschreibung'>" + weininfo[this.id] + "</section><button id='inwarenkorb'>In den Warenkorb</button></div>");
     }
 });
 
