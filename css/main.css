@@ -28,6 +28,7 @@
     overflow: hidden;
     text-align: center;
     border-radius: 0;
+    font-family: sans-serif;
 }
 
 #fullinhalt
@@ -40,11 +41,10 @@
     margin-bottom: 10px;
 }
 
-button, .produkt h3
+button
 {
     padding: 10px;
-    color: #aa72f3;
-    background: #56387e;
+    background: #222;
     border-style: none;
     min-width: 100px;
     transition: 0.7s;
@@ -52,8 +52,7 @@ button, .produkt h3
 
 button:hover
 {
-    color: #ccb2ee;
-    background: #68587e;
+    filter: brightness(150%);
     cursor: pointer;
 }
 
@@ -117,17 +116,18 @@ header
 #headsteine
 {
 
-    background-image: url(../img/stonesdark.jpg);
+    background-image: url(../img/steine/stonesdark.jpg);
 }
 
 #headgames
 {
-    background-image: url(../img/gamesdark.jpg);
+    background-image: url(../img/games/gamesdark.jpg);
+    background-position:left bottom;
 }
 
 #headwein
 {
-    background-image: url(../img/weindark.jpg);
+    background-image: url(../img/wein/weindark.jpg);
     background-position:left bottom;
 
 }
@@ -159,7 +159,7 @@ article
 .produkt:hover
 {
     cursor: pointer;
-    box-shadow: 0px 0px 15px 1px rgba(139, 103, 168, 0.801);
+    box-shadow: 0px 0px 15px 1px rgba(212, 210, 196, 0.801);
 }
 
 

@@ -98,20 +98,28 @@ $('.wahl').click(function(){
   {
     produktanzahl = steine.length;
     $('.hintergrundfarbe').css("background", "#000000");
-    $('.standard').css("font-family", "Overpass, sans-serif");
+    $('.standard, p, #beschreibungstext').css("font-family", "Overpass, sans-serif");
+    $('.standard, p, #beschreibungstext').css("font-size", "12pt");
+    $('button').css("background", "#56387e")
+    $('button').css("color", "#aa72f3")
   }
   else if(auswahl == 'games')
   {
     produktanzahl = games.length;
     $('.hintergrundfarbe').css("background", "#000000");
-    $('.standard').css("font-family", "Bebas Neue, cursive");
-    $('p').css("font-family", "Overpass, sans-serif");
+    $('.standard, p, #beschreibungstext').css("font-family", "Teko, sans-serif");
+    $('.standard, p, #beschreibungstext').css("font-size", "16pt");
+    $('button').css("background", "#147085")
+    $('button').css("color", "#24dbf0")
   }
   else if(auswahl == 'wein')
   {
     produktanzahl = wein.length;
     $('.hintergrundfarbe').css("background", "#000000");
-    $('.standard').css("font-family", "Overpass, sans-serif");
+    $('.standard, p, #beschreibungstext').css("font-family", "Playfair Display, serif");
+    $('.standard, p, #beschreibungstext').css("font-size", "12pt");
+    $('button').css("background", "#780a1c")
+    $('button').css("color", "#e60e31")
   }
 });
 
@@ -159,12 +167,14 @@ $('#startbutton').click(()=>{
 
 })
 
-// ----------------------------------------------------------------------------
-
-
 $(document).on('click', 'button', function(){
   buttonaudio.play();
 })
+
+// ----------------------------------------------------------------------------
+
+
+
 
 
 
