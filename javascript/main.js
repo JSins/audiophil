@@ -122,7 +122,9 @@ $('.wahl').click(function(){
 
 
 // Startbildschirm ausblenden -------------------------------------------------
-let hintergrundstein = new Audio('audio/breathee.mp3');
+let backmusic;
+let buttonaudio;
+buttonaudio = new Audio('audio/buttonstandard.mp3');
 
 $('#startbutton').click(()=>{
   if(auswahl == "")
@@ -132,19 +134,23 @@ $('#startbutton').click(()=>{
   else
   {
     $('#full').fadeOut(3000).hide(1000);
+    backmusic = new Audio('audio/' + auswahl + '/back.mp3');
+    buttonaudio = new Audio('audio/' + auswahl + '/button.mp3');
 
     if(auswahl == 'steine')
     {
-      hintergrundstein.play();
-      hintergrundstein.volume = 0.7;
+      backmusic.play();
+      backmusic.volume = 0.7;
     }
     if(auswahl == 'games')
     {
-      
+      backmusic.play();
+      backmusic.volume = 0.5;
     }
     if(auswahl == 'wein')
     {
-      
+      backmusic.play();
+      backmusic.volume = 0.1;
     }
     
     
@@ -156,11 +162,6 @@ $('#startbutton').click(()=>{
 // ----------------------------------------------------------------------------
 
 
-
-
-
-
-let buttonaudio = new Audio('audio/click2_01.mp3');
 $(document).on('click', 'button', function(){
   buttonaudio.play();
 })
