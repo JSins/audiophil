@@ -16,7 +16,7 @@
     z-index: -5;
 }
 
-#full
+.full
 {
     position: fixed;
     z-index: 1000;
@@ -31,9 +31,21 @@
     font-family: sans-serif;
 }
 
-#fullinhalt
+.fullinhalt
 {
-    margin-top: 20vh;
+    margin-top: 15vh;
+    padding: 0 30vw;
+    line-height: 1.7em;
+}
+
+.fullinhalt p
+{
+    font-size: 1.2em;
+}
+
+.mobile
+{
+    display: none;
 }
 
 .wahl
@@ -225,4 +237,11 @@ article
 #beschreibung
 {
     text-align: left;
+}
+
+
+@media (max-width: 1024px) { 
+    .mobile{
+        display: block;
+    }
 }

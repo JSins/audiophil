@@ -141,7 +141,7 @@ $('#startbutton').click(()=>{
   }
   else
   {
-    $('#full').fadeOut(3000).hide(1000);
+    $('.full').fadeOut(3000).hide(1000);
     backmusic = new Audio('audio/' + auswahl + '/back.mp3');
     buttonaudio = new Audio('audio/' + auswahl + '/button.mp3');
 
@@ -495,8 +495,8 @@ $(document).on('click', '#kaufen', function(){
   console.log('gekauft');
   katsching.play();
 
-  $('#fullinhalt').html("Vielen Dank fürs Mitmachen! Bitte füllen Sie nun den beigefügten Fragebogen aus.<br>Wenn Sie von vorn beginnen wollen, drücken sie nun F5.");
-  $('#full').fadeIn(3000);
+  $('.fullinhalt').html("<h1>Vielen Dank fürs Mitmachen!</h1><p>Bitte nimm nun an der hier verlinkten Befragung zu deinen Erfahrungen im Shop teil.</p><p>Wenn du zuvor noch einmal von vorn beginnen willst, dann drücke nun F5 oder aktualisiere die Seite.</p><a href='https://forms.gle/buM6bqYfgq97nN2VA'>Zur Befragung</a>");
+  $('.full').fadeIn(3000);
 })
 
 // -----------------------------------------------------------------------------------------------------------------------
